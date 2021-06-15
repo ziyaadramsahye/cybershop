@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 block-header">
+      <div class="title">
+        <h3 class="block-title">Best Sellers</h3>
+      </div>
+      <div class="divider"></div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-4">
+      <div class="product-large">
+        <app-best-product [bestsellerProducts]="bestProduct"></app-best-product>
+      </div>
+    </div>
+    <div class="col-8">
+      <div class="bestsellers">
+        <div class="row">
+          <div class="col-4" *ngFor="let fp of bestsellerProducts;">
+            <app-best-product [bestsellerProducts]="fp"></app-best-product>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

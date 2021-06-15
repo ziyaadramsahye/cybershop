@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Inject, Output, Input } from '@angular/core';
+
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,21 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'frontend';
+
+
+  cartItems = [
+    {
+      title: 'Undefined Tool IRadix DPS3000SY 2700 Watts',
+      amount: 1,
+      price: 1500,
+    }
+  ];
+
+  addProductToCart(product) {
+    this.cartItems.push(product);
+  }
+
+  constructor() { }
+
+  title = 'CyberShop';
 }

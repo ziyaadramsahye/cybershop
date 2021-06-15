@@ -1,0 +1,76 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div class="wishlist-body" *ngIf="cartProducts.length === 0; else prods;">
+        <p>Your cart is empty!</p>
+        <button class="btn btn-warning" routerLink="/">Continue</button>
+      </div>
+      <ng-template #prods>
+        <table class="cart_table">
+          <thead class="cart-table_head">
+            <tr class="cart-table_row">
+              <th class="cart-table_column cart-table_column--image">
+                Image
+              </th>
+              <th class="cart-table_column">
+                Product
+              </th>
+              <th class="cart-table_column">
+                Price
+              </th>
+              <th class="cart-table_column">
+                Quantity
+              </th>
+              <th class="cart-table_column">
+                Total
+              </th>
+              <th class="cart-table_column">
+
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="cart-table_row" *ngFor="let product of cartProducts;">
+              <td class="cart-table_column--image">
+                <div class="product-image">
+                  <a href="{{ product.img }}" class="product-image_body">
+                    <img class="product_image" src="{{ product.img }}" alt="image">
+                  </a>
+                </div>
+              </td>
+              <td class="cart-table_column--product">
+                <a href="{{ product.img }}" class="cart-table_product-name">
+                  {{ product.title }}
+                </a>
+              </td>
+              <td class="cart-table_column--price">
+                MUR {{ product.price }}
+              </td>
+              <td class="cart-table_column cart-table_column--quantity">
+                  <app-input-number class="input-number ng-untouched ng-pristine ng-valid" (change)="onInputChange($event)"></app-input-number>
+              </td>
+              <td class="cart-table_column--total">
+                MUR {{ product.price }}
+              </td>
+              <td class="cart-table_column cart-table_column--remove">
+                <button type="button" class="btn btn-light btn-sm">
+                  <i class="fas fa-times"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="cart-actions">
+          <form class="cart_coupon-form ng-untouched ng-pristine ng-valid">
+            <input type="text" id="input-coupon-code" placeholder="Coupon Code" class="form-control">
+            <button type="submit" class="btn btn-primary">Apply Coupon</button>
+          </form>
+          <div class="cart_buttons">
+            <a [routerLink]="['/']" class="btn btn-light">Continue Shopping</a>
+            <button type="button" class="btn btn-primary cart_update-button" [disabled]="!updateCart" (click)="updateCartPrices()">Update Cart</button>
+          </div>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</div>

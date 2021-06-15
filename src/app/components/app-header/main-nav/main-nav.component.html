@@ -1,0 +1,181 @@
+<div class="main-nav">
+  <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
+      <div class="categories-nav">
+          <div class="categories categories-fixed" [ngClass]="{'categories-open': isHome === true, 'categories-close': isHome === false}" id="cat-div">
+            <div class="categories-body">
+              <div class="categories-links-wrapper">
+                <div class="categories-submenu-container">
+                  <ul class="categories-links">
+                    <li class="categories-item">
+                      <a href="#" class="categories-item-link">Apparel &amp; Clothing</a>
+                    </li>
+                    <li class="categories-item">
+                      <a href="#" class="categories-item-link">Building Supplies</a>
+                    </li>
+                    <li class="categories-item">
+                      <a href="#" class="categories-item-link">Electrical</a>
+                    </li>
+                    <li class="categories-item">
+                      <a href="#" class="categories-item-link">Electronics</a>
+                    </li>
+                    <li class="categories-item">
+                      <a href="#" class="categories-item-link">Gadgets</a>
+                    </li>
+                    <li class="categories-item">
+                      <a href="#" class="categories-item-link">Garden Equipments</a>
+                    </li>
+                    <li class="categories-item">
+                      <a href="#" class="categories-item-link">Measurement</a>
+                    </li>
+                    <li class="categories-item">
+                      <a href="#" class="categories-item-link">Pet Corner</a>
+                    </li>
+                    <li class="categories-item">
+                      <a href="#" class="categories-item-link">Plumbing</a>
+                    </li>
+                    <li class="categories-item">
+                      <a href="#" class="categories-item-link">Storage &amp; Organization</a>
+                    </li>
+                    <li class="categories-item">
+                      <a href="#" class="categories-item-link">Tools &amp; Instruments</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <button class="categories-btn btn" (click)="onCategoryShopClick()" id="cat-shop-btn" [disabled]="isHome === true">
+              <i class="fas fa-bars"></i>
+              Shop By Category
+              <i class="fas fa-chevron-up"></i>
+            </button>
+          </div>
+      </div>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" routerLink="/">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Shop</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/cart">Cart</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Compare</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/wishlist">
+              <i class="fas fa-heart"></i>
+              <span class="wishlist-count count">{{ wishlistCount }}</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <div ngbDropdown class="d-inline-block">
+              <a href="javascript:void(0);" class="nav-link" ngbDropdownToggle>
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-count count" (count)="count">{{ count }}</span>
+              </a>
+              <div ngbDropdownMenu aria-labelledby="cart-dropdown" class="cart-dropdown-menu dropdown-menu dropdown-menu-right" *ngIf="count === 0; else cart">
+                <h1 class="text-center">Your shopping cart is empty!</h1>
+              </div>
+              <ng-template #cart>
+                <div ngbDropdownMenu aria-labelledby="cart-dropdown" class="cart-dropdown-menu dropdown-menu dropdown-menu-right" style="max-height:500px; overflow-y: scroll;">
+                  <div class="card mb-3" style="max-width: 280px;" *ngFor="let item of cartItems">
+                    <div class="row no-gutters">
+                      <div class="col-3">
+                        <img src="{{ item.img }}" class="card-img" alt="...">
+                      </div>
+                      <div class="col-8">
+                        <div class="card-body">
+                          <h5 class="card-title">{{ item.title }}</h5>
+                          <p class="card-text"><small class="text-muted">1 x MUR {{ item.price }}</small></p>
+                        </div>
+                      </div>
+                      <div class="col-1">
+                        <button class="btn btn-default" (click)="removeItem(item)">
+                          <i class="fas fa-times"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="pricing">
+                    <div class="subtotal pr">
+                      <p class="title">Subtotal</p>
+                      <p class="subtotal-price">
+                        MUR {{ totalPrice }}
+                      </p>
+                    </div>
+                    <div class="shipping pr">
+                      <p class="title">Shipping</p>
+                      <p class="subtotal-price">
+                        MUR {{ shippingPrice }}
+                      </p>
+                    </div>
+                    <div class="tax pr">
+                      <p class="title">Tax</p>
+                      <p class="subtotal-price">
+                        MUR {{ taxPrice }}
+                      </p>
+                    </div>
+                    <div class="subtotal pr">
+                      <p class="title">Total</p>
+                      <p class="subtotal-price">
+                        MUR {{ grandTotal }}
+                      </p>
+                    </div>
+                  </div>
+                  <div class="options row">
+                    <button class="btn btn-default view-cart-btn col-5" routerLink="/cart">View Cart</button>
+                    <button class="btn btn-warning checkout-btn col-5 offset-md-1">Checkout</button>
+                  </div>
+                </div>
+              </ng-template>
+            </div>
+          </li>
+          <li class="nav-item">
+            <div ngbDropdown #userDrop="ngbDropdown" class="d-inline-block">
+              <a href="javascript:void(0);" class="user-dropdown" ngbDropdownToggle>
+                <i class="fas fa-user"></i>
+              </a>
+              <div ngbDropdownMenu aria-labelledby="user-dropdown" class="user-dropdown-menu dropdown-menu dropdown-menu-right" *ngIf="loggedInUser.email === null; else showLogout">
+                <h1 class="text-center">Login to your account</h1>
+                <form class="px-4 py-3" [formGroup]="loginForm" (ngSubmit)="onLoginFormSubmit();">
+                  <div class="form-group">
+                    <label for="exampleDropdownFormEmail1">Email address</label>
+                    <input type="email" class="form-control" id="exampleDropdownFormEmail1" formControlName="email" placeholder="email@example.com">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleDropdownFormPassword1">Password</label>
+                    <input type="password" class="form-control" id="exampleDropdownFormPassword1" formControlName="password" placeholder="Password">
+                  </div>
+                  <div class="form-group">
+                    <a href="#" class="forgot-pwd">Forgot Password</a>
+                  </div>
+                  <button type="submit" class="btn" [disabled]="!loginForm.valid" (click)="userDrop.close()">Login</button>
+                </form>
+                <div class="dropdown-divider"></div>
+                <div class="group text-center">
+                  <a href="#" class="create-accnt">Create Account</a>
+                </div>
+              </div>
+              <ng-template #showLogout>
+                <div ngbDropdownMenu aria-labelledby="user-dropdown" class="user-dropdown-menu dropdown-menu dropdown-menu-right">
+                  <button type="button" class="btn btn-primary logout_btn" (click)="logout();">Logout</button>
+                </div>
+              </ng-template>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</div>

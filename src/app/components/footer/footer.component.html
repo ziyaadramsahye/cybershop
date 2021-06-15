@@ -1,0 +1,110 @@
+<footer class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-4">
+        <h5 class="col-title">Contact Us</h5>
+        <p class="contact">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer in feugiat lorem. Pellentque ac placerat tellus.
+        </p>
+        <div class="info">
+          <div class="icon">
+            <i class="fas fa-globe-africa"></i>
+          </div>
+          <p class="icon-text">
+            53, Avenue Des Vergues, Glen-Park, Vacoas
+          </p>
+        </div>
+        <div class="info">
+          <div class="icon">
+            <i class="fas fa-envelope"></i>
+          </div>
+          <p class="icon-text">
+            ziyaadscarface@gmail.com
+          </p>
+        </div>
+        <div class="info">
+          <div class="icon">
+            <i class="fas fa-mobile-alt"></i>
+          </div>
+          <p class="icon-text">
+            (230) 5739 9923
+          </p>
+        </div>
+        <div class="info">
+          <div class="icon">
+            <i class="far fa-clock"></i>
+          </div>
+          <p class="icon-text">
+            Mon-Fri 09:00 - 17:00
+          </p>
+        </div>
+      </div>
+      <div class="col-2">
+        <h5 class="col-title">Information</h5>
+        <ul class="info-list">
+          <li class="list-item" *ngFor="let link of infoLinks;">
+            <a href="/" class="info-link">{{ link }}</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-2">
+        <h5 class="col-title">My Account</h5>
+        <ul class="info-list">
+          <li class="list-item" *ngFor="let link of accountLinks;">
+            <a href="/" class="info-link">{{ link }}</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-4">
+        <h5 class="col-title">Newsletter</h5>
+        <p class="text">
+          Praesent pellentesque volutpat ex, vitae auctor lorem pulvinar mollis felis at lacinia.
+        </p>
+        <form method="post" class="form-inline">
+          <div class="form-group row">
+            <div class="col-8 col">
+              <input type="email" class="form-control" placeholder="Email Address..">
+            </div>
+            <div class="col-4 col">
+              <input type="submit" class="form-control" value="Subscribe">
+            </div>
+          </div>
+        </form>
+        <div class="follow">
+          <p class="text">Follow us on social networks</p>
+          <ul class="icons list-inline">
+            <li class="list-inline-item">
+              <a href="/" class="icon-link">
+                <i class="fab fa-facebook-f" title="Facebook"></i>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="/" class="icon-link">
+                <i class="fab fa-instagram" title="Instagram"></i>
+              </a>
+            </li>
+            <li  class="list-inline-item">
+              <a href="/" class="icon-link">
+                <i class="fab fa-youtube" title="Youtube"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <hr>
+        <div class="foot">
+          <div class="left">
+            <small>Powered By <a href="https://www.mobboxdevelopment.com" target="_blank" class="foot-link">Mobbox Development Ltd</a></small>
+          </div>
+          <div class="right">
+            <img src="assets/payments.png" alt="payments">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</footer>

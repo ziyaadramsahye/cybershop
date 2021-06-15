@@ -1,0 +1,145 @@
+<div class="card-link">
+  <div class="card" style="width:14rem; min-height:18rem;">
+    <img src="{{ bestsellerProducts.img }}" class="card-img-top" alt="...">
+    <button class="btn eye-btn" (click)="openProduct(content)">
+      <i class="fas fa-eye"></i>
+    </button>
+    <div class="card-body">
+      <div class="prod-rating">
+        <a href="#" class="card-title">{{ bestsellerProducts.title }}</a>
+        <div class="rating">
+          <app-best-product-rating [rating]="bestsellerProducts.rating"></app-best-product-rating>
+          {{ bestsellerProducts.reviews }} Reviews
+        </div>
+        <p class="price">MUR {{ bestsellerProducts.price }}</p>
+      </div>
+      <div class="cart-options">
+        <button class="btn btn-warning add-to-cart-btn" (click)="addToCart(bestsellerProducts)">Add to cart</button>
+        <div class="btns">
+          <button class="btn btn-default">
+            <i class=" fas fa-heart"></i>
+          </button>
+          <button class="btn btn-default">
+            <i class=" fas fa-chart-bar"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">
+        <i class="fas fa-times"></i>
+      </span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-6">
+          <owl-carousel-o [options]="customOptions" class="owl-show show-view" #galCar>
+            <ng-template carouselSlide *ngFor="let gal of bestsellerProducts.gallery">
+                <div class="slide">
+                  <img src="{{ gal }}" alt="gal">
+                </div>
+            </ng-template>
+          </owl-carousel-o>
+          <div class="gal-car-nav">
+            <a class="btn" *ngFor="let gal of bestsellerProducts.gallery; let i = index" (click)="galCar.to(i)">
+              <img src="{{ gal }}">
+            </a>
+          </div>
+        </div>
+        <div class="col-md-6 additional-info">
+          <h1 class="title">{{ bestsellerProducts.title }}</h1>
+          <div class="rating">
+            <app-best-product-rating [rating]="bestsellerProducts.rating"></app-best-product-rating>
+            {{ bestsellerProducts.reviews }} Reviews / <a href="#" class="write-review"> Write a review</a>
+          </div>
+          <p class="description">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ornare, mi in ornare elementum, libero nibh lacinia urna, quis convallis lorem erat at purus. Maecenas eu varius nisi.
+          </p>
+          <div class="divider"></div>
+          <div class="info">
+            <p class="availability">Availability: <span [ngClass]="bestsellerProducts.instock ? 'green' : 'red'">{{ bestsellerProducts.instock ? 'In Stock' : 'Out of Stock' }}</span></p>
+            <p class="brand">Brand: Wakita</p>
+            <p class="sku">SKU: 83690/32</p>
+          </div>
+          <p class="price large">MUR {{ bestsellerProducts.price }}</p>
+          <div class="color">
+            <h4 class="subtitle">Color</h4>
+            <div class="radio-label">
+              <ul class="list-inline">
+                <li class="list-inline-item">
+                  <label for="red">
+                    <input type="radio" class="form-control" id="color[]" name="color[]">
+                    <span>Red</span>
+                  </label>
+                  <label for="blue">
+                    <input type="radio" class="form-control" id="color[]" name="color[]">
+                    <span>Blue</span>
+                  </label>
+                  <label for="yellow">
+                    <input type="radio" class="form-control" id="color[]" name="color[]">
+                    <span>Yellow</span>
+                  </label>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="material">
+            <h4 class="subtitle">Material</h4>
+            <div class="radio-label">
+              <ul class="list-inline">
+                <li class="list-inline-item">
+                  <label for="metal">
+                    <input type="radio" class="form-control" id="material[]" name="material[]">
+                    <span>Metal</span>
+                  </label>
+                  <label for="wood">
+                    <input type="radio" class="form-control" id="material[]" name="material[]">
+                    <span>Wood</span>
+                  </label>
+                  <label for="plastic">
+                    <input type="radio" class="form-control" id="material[]" name="material[]">
+                    <span>Plastic</span>
+                  </label>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="quantity">
+            <app-input-number></app-input-number>
+            <button class="btn btn-warning">Add to cart</button>
+            <button class="btn btn-default btn-grey">
+              <i class="fas fa-heart"></i>
+            </button>
+            <button class="btn btn-default btn-grey">
+              <i class="fas fa-chart-bar"></i>
+            </button>
+          </div>
+          <div class="tags-div">
+            <div class="tags">
+              <a href="#" class="badge badge-light">Mounts</a>
+              <a href="#" class="badge badge-light">Electrodes</a>
+              <a href="#" class="badge badge-light">Chainsaws</a>
+            </div>
+            <div class="social">
+              <a href="#" class="badge badge-primary">
+                <i class="fab fa-facebook-f"></i> Like
+              </a>
+              <a href="#" class="badge badge-info">
+                <i class="fab fa-twitter"></i> Tweet</a>
+              <a href="#" class="badge badge-danger">
+                <i class="fab fa-pinterest"></i> Pin It</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>

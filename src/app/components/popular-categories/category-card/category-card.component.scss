@@ -1,0 +1,39 @@
+.card img{
+  margin-top:30px;
+}
+
+.card{
+  border:none;
+  box-shadow: 0 1px 16px rgba(0,0,0,.04);
+}
+
+.card-title{
+  color:#3d464d;
+  text-transform: capitalize;
+  margin-left:10px;
+}
+
+.links-ul{
+  padding-left:10px;
+}
+
+
+.links-ul a{
+  font-size:14px;
+  color:#6c757d;
+  font-weight:300;
+  transition: all .5s;
+}
+
+.links-ul a:hover{
+  text-decoration: none;
+  color:#1a66ff;
+}
+
+.show-all-link{
+  margin-left:10px;
+  font-size:14px;
+  color: #1a66ff;
+  text-transform: capitalize;
+}
+

@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="row">
+    <div class="block-header">
+      <div class="title">
+        <h3 class="block-title">Featured Products</h3>
+      </div>
+      <div class="divider"></div>
+      <div class="list-inline">
+        <ul class="group-list">
+          <li class="list-inline-item">
+            <button class="btn block-btn active" (click)="onFeatureListClick($event);">All</button>
+          </li>
+          <li class="list-inline-item">
+            <button class="btn block-btn" (click)="onFeatureListClick($event);">Electrical</button>
+          </li>
+          <li class="list-inline-item">
+            <button class="btn block-btn" (click)="onFeatureListClick($event);">Gadgets</button>
+          </li>
+          <li class="list-inline-item">
+            <button class="btn block-btn" (click)="onFeatureListClick($event);">Plumbing</button>
+          </li>
+        </ul>
+      </div>
+      <p>
+        <a class="btn" (click)="owlCar.prev()">
+          <i class="fas fa-chevron-left"></i>
+        </a>
+        <a class="btn" (click)="owlCar.next()">
+          <i class="fas fa-chevron-right"></i>
+        </a>
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <div class="carousel-owl">
+        <div class="loading-overlay" *ngIf="loading">
+          <mat-progress-spinner mode="indeterminate" class="spinner" [color]="color"></mat-progress-spinner>
+        </div>
+        <owl-carousel-o [options]="customOptions" class="owl-show show-view" #owlCar>
+          <ng-template carouselSlide *ngFor="let fp of featuredProducts;" [dataHash]="fp.id">
+              <div class="slide">
+                  <app-product [featuredProducts]="fp"></app-product>
+              </div>
+          </ng-template>
+        </owl-carousel-o>
+      </div>
+    </div>
+  </div>
+</div>

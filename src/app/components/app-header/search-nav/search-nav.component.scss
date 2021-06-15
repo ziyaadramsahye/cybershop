@@ -1,0 +1,50 @@
+.row{
+  padding-top:20px;
+  padding-bottom:20px;
+  display:flex;
+  align-items:center;
+}
+
+.form-inline{
+  border:2px solid #e5e5e5;
+  border-radius:2px;
+}
+
+.form-control{
+  border:none;
+  width:100%;
+}
+
+select{
+  border-right:2px solid #e5e5e5 !important;
+  border-radius:0;
+}
+
+.form-group:first-child{
+  width:40%;
+}
+
+.form-group:last-child{
+  width:60%;
+}
+
+h5{
+  font-size: 14px;
+  color: #999;
+  margin-bottom: 6px;
+  text-align:right;
+}
+
+.phone{
+  font-size: 20px;
+  font-weight: 700;
+  color:black;
+  text-align:right;
+  float:right;
+  transition: all .5s;
+}
+
+.phone:hover{
+  text-decoration: none;
+  color:#ffd333
+}

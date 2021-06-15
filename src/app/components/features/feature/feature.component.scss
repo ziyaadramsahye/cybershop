@@ -1,0 +1,33 @@
+.block-features-item{
+  display:flex;
+  align-items: center;
+  justify-content: space-evenly;
+  padding:5px;
+  border:1px solid #f0f0f0;
+}
+
+.block-features-item:not(:last-child){
+  border-right:none;
+}
+
+.block-features-item:not(:first-child){
+  border-left:none;
+}
+
+.features-title{
+  font-weight:700;
+  font-size:18px;
+  padding-top:25px;
+  color: #3d464d;
+}
+
+.features-text{
+  font-weight:300;
+  font-size: 12px;
+  color: #3d464d;
+}
+
+.fas,
+.fa{
+  color:#ffd333;
+}

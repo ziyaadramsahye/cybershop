@@ -1,0 +1,72 @@
+.card-title{
+  font-size: 15px;
+  color:#3d464d;
+  margin-bottom:20px;
+}
+
+.rating{
+  font-size: 13px;
+  line-height: 1;
+  color: #b3b3b3;
+  padding-top: 1px;
+  margin-bottom:20px;
+}
+
+.price{
+  font-weight:700;
+  font-size:14px;
+  color:#3d464d;
+}
+
+.card{
+  position: relative;
+  padding: 1px;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  min-height:10rem;
+  margin-bottom:0;
+  border:none;
+}
+
+.card::before{
+  content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+    border-radius: 2px;
+    box-shadow: inset 0 0 0 1px #ededed;
+    transition: box-shadow .2s;
+}
+
+.card:hover::before{
+  box-shadow: inset 0 0 0 2px rgba(255,211,51,.7);
+}
+
+.card-body{
+  display:flex;
+  flex-direction:column;
+}
+
+.discount{
+  color: #ff2626;
+  font-weight:700;
+  font-size:15px;
+}
+
+.old-price{
+  text-decoration: line-through;
+  color: #b3b3b3;
+  font-weight: 400;
+  font-size: 13px;
+}
+
+h5, p{
+  margin-bottom:0;
+}
+

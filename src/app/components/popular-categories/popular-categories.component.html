@@ -1,0 +1,18 @@
+<div class="wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 block-header">
+        <div class="title">
+          <h3 class="block-title">Popular Categories</h3>
+        </div>
+        <div class="divider"></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-4" *ngFor="let cat of categories;">
+        <app-category-card [categories]="cat"></app-category-card>
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,39 @@
+.main-banner{
+  margin-top: 15px;
+  height: 395px;
+}
+
+::ng-deep .owl-theme .owl-dots .owl-dot span {
+  position:relative;
+  bottom:50px;
+}
+
+.owl-carousel-inner{
+  position:absolute;
+  top:80px;
+  width:60%;
+  padding:10px 25px;
+}
+
+.owl-carousel-title{
+  font-size:28px;
+  width:60%;
+  font-weight:bolder;
+}
+
+.owl-carousel-text{
+  font-weight:300;
+}
+
+.shop-now-btn{
+  background-color:#ffd333;
+  padding:10px 25px;
+  border-radius:0;
+  transition: all .5s;
+  font-weight:500;
+}
+
+.shop-now-btn:hover{
+  color:#ffffff;
+  background-color:#3d464d;
+}

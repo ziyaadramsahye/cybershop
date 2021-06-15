@@ -1,0 +1,22 @@
+<a href="/" class="card-link">
+  <div class="card" style="max-width: 540px;">
+    <div class="row no-gutters">
+      <div class="col-md-4">
+        <img src="{{ offers.img }}" class="card-img" alt="...">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">{{ offers.title }}</h5>
+          <div class="rating">
+            <app-rating [rating]="offers.rating"></app-rating>
+            {{ offers.reviews }} Reviews
+          </div>
+          <p class="price" *ngIf="!offers.discount;else discount">MUR {{ offers.price }}</p>
+          <ng-template #discount>
+            <p class="discount">MUR {{ offers.discountPrice }} &nbsp; <span class="old-price">MUR {{ offers.price }}</span> </p>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </div>
+</a>
