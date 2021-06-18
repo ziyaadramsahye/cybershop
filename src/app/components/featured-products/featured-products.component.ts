@@ -37,7 +37,7 @@ export class FeaturedProductsComponent implements OnInit {
     URLhashListener: true
   }
 
-  featuredProductsCopy = this.featuredProducts;
+  featuredProductsCopy: Product[] = [];
 
 
   public cdr: ChangeDetectorRef;
@@ -48,6 +48,7 @@ export class FeaturedProductsComponent implements OnInit {
 
   ngOnInit(): void {
     this.featuredProducts = this.featuredProductsService.getFeaturedProducts();
+    this.featuredProductsCopy = this.featuredProducts;
   }
 
   delay(ms: number) {

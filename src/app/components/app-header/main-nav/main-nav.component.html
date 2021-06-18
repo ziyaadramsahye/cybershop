@@ -74,14 +74,14 @@
           <li class="nav-item">
             <a class="nav-link" routerLink="/wishlist">
               <i class="fas fa-heart"></i>
-              <span class="wishlist-count count">{{ wishlistCount }}</span>
+              <span class="wishlist-count count" (wishlistRemoved)="updateWishlistCount()">{{ wishlistCount }}</span>
             </a>
           </li>
           <li class="nav-item">
             <div ngbDropdown class="d-inline-block">
               <a href="javascript:void(0);" class="nav-link" ngbDropdownToggle>
                 <i class="fas fa-shopping-cart"></i>
-                <span class="cart-count count" (count)="count">{{ count }}</span>
+                <span class="cart-count count" (count)="count" (cartRemoved)="updateCartCount()">{{ count }}</span>
               </a>
               <div ngbDropdownMenu aria-labelledby="cart-dropdown" class="cart-dropdown-menu dropdown-menu dropdown-menu-right" *ngIf="count === 0; else cart">
                 <h1 class="text-center">Your shopping cart is empty!</h1>

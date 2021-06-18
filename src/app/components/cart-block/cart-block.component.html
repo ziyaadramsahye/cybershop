@@ -30,7 +30,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr class="cart-table_row" *ngFor="let product of cartProducts;">
+            <tr class="cart-table_row" *ngFor="let product of cartProducts.slice()">
               <td class="cart-table_column--image">
                 <div class="product-image">
                   <a href="{{ product.img }}" class="product-image_body">
@@ -53,7 +53,7 @@
                 MUR {{ product.price }}
               </td>
               <td class="cart-table_column cart-table_column--remove">
-                <button type="button" class="btn btn-light btn-sm">
+                <button type="button" class="btn btn-light btn-sm" (click)="removeFromCart(product)">
                   <i class="fas fa-times"></i>
                 </button>
               </td>
@@ -67,7 +67,7 @@
           </form>
           <div class="cart_buttons">
             <a [routerLink]="['/']" class="btn btn-light">Continue Shopping</a>
-            <button type="button" class="btn btn-primary cart_update-button" [disabled]="!updateCart" (click)="updateCartPrices()">Update Cart</button>
+            <button type="button" class="btn btn-primary cart_update-button" [disabled]="!updateCart">Update Cart</button>
           </div>
         </div>
       </ng-template>

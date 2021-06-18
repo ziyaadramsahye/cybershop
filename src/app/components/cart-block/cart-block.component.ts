@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter } from '@angular/core';
 import { Product } from 'src/app/models/product.model';
-import { FeaturedProductsService } from 'src/app/services/featured-products.service';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-cart-block',
@@ -9,15 +9,17 @@ import { FeaturedProductsService } from 'src/app/services/featured-products.serv
 })
 export class CartBlockComponent implements OnInit {
 
-  cartProducts: string[] = [];
-  products: Product[] = [];
+  cartProducts: Product[] = [];
+
   updateCart: boolean = false;
 
-  constructor(private featuredProductsService: FeaturedProductsService) { }
+  cartRemoved = new EventEmitter<Product>();
+
+  constructor(private cartService:  CartService) { }
 
   ngOnInit(): void {
     this.cartProducts = JSON.parse(localStorage.getItem("cart"));
-    console.log(this.cartProducts);
+    this.cartService.setCartProducts(this.cartProducts);
   }
 
   onInputChange(value){
@@ -29,8 +31,9 @@ export class CartBlockComponent implements OnInit {
     }
   }
 
-  updateCartPrices(){
-
+  removeFromCart(product){
+    this.cartProducts = this.cartService.removeProduct(product);
+    console.log(this.cartProducts);
   }
 
 }

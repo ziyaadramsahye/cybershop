@@ -26,6 +26,10 @@ export class CartService {
     localStorage.setItem("cart", JSON.stringify(this.cartProducts));
   }
 
+  setCartProducts(products){
+    this.cartProducts = products;
+  }
+
   getCartProducts(){
     return this.cartProducts.slice();
   }
@@ -39,6 +43,8 @@ export class CartService {
     if(foundIndex !== -1){
       this.cartProducts.splice(foundIndex, 1);
     }
+    localStorage.setItem("cart", JSON.stringify(this.cartProducts.slice()));
+    this.cartChanged.emit(this.cartProducts.slice());
     return this.cartProducts;
   }
 }

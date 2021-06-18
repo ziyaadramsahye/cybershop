@@ -279,3 +279,17 @@ form{
   margin:0 auto;
   display:block
 }
+
+.btn-primary, .btn-primary.disabled, .btn-primary:disabled {
+  border-color: #ffd333;
+  background: #ffd333;
+  color: #3d464d;
+  fill: #3d464d;
+}
+
+.btn-primary:not(:disabled).focus, .btn-primary:not(:disabled):focus, .btn-primary:not(:disabled):hover {
+  border-color: #3d464d;
+  background: #3d464d;
+  color: #fff;
+  fill: #fff;
+}

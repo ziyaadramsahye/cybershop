@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { EventEmitter, Injectable, OnInit } from "@angular/core";
 import { UserService } from "./user.service";
 import { User } from "../models/user.model";
 
@@ -6,8 +6,10 @@ import { User } from "../models/user.model";
   providedIn: 'root'
 })
 export class Auth{
+
   isAuthenticate = false;
   user: User = {email: null, password: null};
+  userLoggedIn: CustomEvent;
 
   constructor(private userService: UserService){
     this.user = this.getUser();
@@ -15,7 +17,8 @@ export class Auth{
 
   login(user: User): boolean {
     this.setUser(user);
-    if(user === this.user && this.user.email !== null){
+    if(this.user.email === this.userService.getUser().email && this.user.password === this.userService.getUser().password){
+      sessionStorage.setItem("user", JSON.stringify(user));
       this.isAuthenticate = true;
       return this.isAuthenticate;
     }
@@ -24,6 +27,7 @@ export class Auth{
   }
 
   logout(){
+    sessionStorage.removeItem("user");
     this.user = {email: null, password: null};
     this.isAuthenticate = false;
     return this.user;
@@ -34,6 +38,6 @@ export class Auth{
   }
 
   getUser(){
-    return this.user;
+    return JSON.parse(sessionStorage.getItem("user"));
   }
 }

@@ -1,4 +1,4 @@
 export interface ProductGallery {
-  img: String;
-  hash: String;
+  img: string;
+  hash: string;
 }

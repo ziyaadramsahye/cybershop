@@ -5,5 +5,13 @@ import { User } from "../models/user.model";
   providedIn: 'root'
 })
 export class UserService{
-  user: [] = [];
+
+  userA: User = {
+    email: "ziyaadscarface@gmail.com",
+    password: "qwerty"
+  };
+
+  getUser(){
+    return this.userA;
+  }
 }

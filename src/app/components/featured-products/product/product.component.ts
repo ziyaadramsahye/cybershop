@@ -4,6 +4,7 @@ import { EventEmitter } from '@angular/core';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import { CartService } from 'src/app/services/cart.service';
 import { Product } from 'src/app/models/product.model';
+import { WishListService } from 'src/app/services/wishlist.service';
 
 @Component({
   selector: 'app-product',
@@ -38,7 +39,10 @@ export class ProductComponent implements OnInit {
     startPosition: 'URLHash'
   }
 
-  constructor(private modalService: NgbModal, private _snackBar: MatSnackBar, private cartService: CartService) {
+  constructor(private modalService: NgbModal,
+    private _snackBar: MatSnackBar,
+    private cartService: CartService,
+    private wishListService: WishListService) {
   }
 
   ngOnInit(): void {
@@ -71,4 +75,9 @@ export class ProductComponent implements OnInit {
   addToCart(product: Product){
     this.cartService.addToCart(product);
   }
+
+  addToWishList(product: Product){
+    this.wishListService.addToWishList(product);
+  }
+
 }

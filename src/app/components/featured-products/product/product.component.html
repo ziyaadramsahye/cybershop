@@ -12,9 +12,9 @@
       </div>
       <p class="price">MUR {{ featuredProducts.price }}</p>
       <div class="cart-options">
-        <button class="btn btn-warning add-to-cart-btn" (click)="addToCart(featuredProducts);">Add to cart</button>
+        <button class="btn btn-warning add-to-cart-btn" (click)="addToCart(featuredProducts);" [disabled]="featuredProducts.instock !== true ? 'disabled' : ''">Add to cart</button>
         <div class="btns">
-          <button class="btn btn-default">
+          <button class="btn btn-default" (click)="addToWishList(featuredProducts);">
             <i class=" fas fa-heart"></i>
           </button>
           <button class="btn btn-default">
@@ -112,8 +112,8 @@
           </div>
           <div class="quantity">
             <app-input-number></app-input-number>
-            <button class="btn btn-warning">Add to cart</button>
-            <button class="btn btn-default btn-grey">
+            <button class="btn btn-warning" (click)="addToCart(featuredProducts)" [disabled]="featuredProducts.instock !== true ? 'disabled' : ''">Add to cart</button>
+            <button class="btn btn-default btn-grey" (click)="addToWishList(featuredProducts)">
               <i class="fas fa-heart"></i>
             </button>
             <button class="btn btn-default btn-grey">
